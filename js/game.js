@@ -85,13 +85,7 @@ export class game {
   }
 
   switchPlayer(player) {
-    Array.from(document.querySelectorAll("label[data-player]")).forEach((ele) =>
-      ele.classList.remove("active")
-    );
-
-    document
-      .querySelector(`label[data-player='${player}']`)
-      .classList.add("active");
+    document.querySelector(".game-wrapper").setAttribute("data-player", player);
 
     document.querySelector(
       `input[name='player'][value='${player}']`
@@ -116,6 +110,7 @@ export class game {
 
     if (!this.hasInited) {
       this.hasInited = true;
+      this.gameElement.classList.add("game--start");
       return true;
     } else {
       return isClickOnActiveTicTacToe;
@@ -153,6 +148,8 @@ export class game {
     Array.from(
       document.querySelectorAll(`.${this.ticTacToeClass}`)
     ).forEach((ele) => ele.classList.remove(this.ticTacToeActiveClass));
+
+    this.gameElement.classList.remove("game--start");
   }
 
   messageFinishInfo(result) {
