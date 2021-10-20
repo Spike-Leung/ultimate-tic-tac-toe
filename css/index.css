@@ -1,3 +1,5 @@
+@import "./congratulation.css";
+
 :root {
   --color-player-1-win: #ff9e9e;
   --color-player-2-win: #7e7eff;
@@ -6,7 +8,9 @@
 }
 
 .game-wrapper {
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   width: 45vw;
   height: 45vw;
   display: flex;
@@ -35,6 +39,25 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin: 15px 0;
+}
+
+.game[data-winner-message] {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.game[data-winner-message] .tic-tac-toe {
+    z-index: -1;
+}
+
+.game[data-winner-message]:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: attr(data-winner-message);
+    color: var(--color-player, #FFF);
+    font-weight: bold;
+    font-size: xx-large;
 }
 
 .game--start .tic-tac-toe:not(.tic-tac-toe--active) {

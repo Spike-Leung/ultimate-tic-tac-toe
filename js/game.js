@@ -8,6 +8,7 @@ export class game {
     this.turns = 0;
     this.hasInited = false;
     this.ticTacToeInstances = null;
+    this.congratulationInterval = null;
   }
 
   get ticTacToeClass() {
@@ -27,7 +28,9 @@ export class game {
     this.initTicTacToeInstances();
 
     this.gameElement.addEventListener("click", this.onLatticeClick.bind(this));
-    document.querySelector(".reset-button").addEventListener("click", this.resetGame.bind(this));
+    document
+      .querySelector(".reset-button")
+      .addEventListener("click", this.resetGame.bind(this));
   }
 
   drawTicTacToe() {
@@ -76,13 +79,15 @@ export class game {
       this.records[ticTacToeIndex] = result;
     }
 
-    this.switchPlayer(nextPlayer);
-    this.setNextActiveTicTacToe(latticeIndex);
+    const winner = checkTictactoeWinner(this.records);
 
-    setTimeout(() => {
-      this.messageFinishInfo(checkTictactoeWinner(this.records)) &&
-        this.resetGame();
-    }, 200);
+    if (winner !== "Pending") {
+      this.messageFinishInfo(winner);
+      this.showCongratulation(winner);
+    } else {
+      this.switchPlayer(nextPlayer);
+      this.setNextActiveTicTacToe(latticeIndex);
+    }
   }
 
   switchPlayer(player) {
@@ -151,6 +156,9 @@ export class game {
     ).forEach((ele) => ele.classList.remove(this.ticTacToeActiveClass));
 
     this.gameElement.classList.remove("game--start");
+    this.gameElement.removeAttribute("data-winner-message", "");
+
+    this.removeCongratulation();
   }
 
   messageFinishInfo(result) {
@@ -160,12 +168,40 @@ export class game {
       Draw: "Draw",
     };
 
-    if (result === "Pending") {
-      return false;
+    this.gameElement.setAttribute("data-winner-message", resultMap[result]);
+  }
+
+  showCongratulation(winner) {
+    if (winner === "Draw") {
+      return;
     }
 
-    alert(resultMap[result]);
+    const congratulationContainerEle = document.querySelector(
+      ".congratulation-container"
+    );
 
-    return true;
+    congratulationContainerEle.setAttribute("data-winner", winner);
+
+    this.congratulationInterval = setInterval(() => {
+      const left = Math.random() * 100 + "vw";
+      const size = Math.random() * 8 + 2 + "px";
+      const speed = ["slow", "medium", "fast"][Math.floor(Math.random() * 3)];
+      const scrapElement = document.createElement("div");
+
+      scrapElement.style.left = left;
+      scrapElement.style.width = size;
+      scrapElement.style.height = size;
+      scrapElement.classList.add("scrap", `scrap--confetti-${speed}`);
+
+      congratulationContainerEle.appendChild(scrapElement);
+
+      setTimeout(() => {
+        scrapElement.parentNode.removeChild(scrapElement);
+      }, 3000);
+    }, 25);
+  }
+
+  removeCongratulation() {
+    this.congratulationInterval && clearInterval(this.congratulationInterval);
   }
 }

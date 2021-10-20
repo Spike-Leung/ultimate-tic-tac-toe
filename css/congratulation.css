@@ -1,0 +1,62 @@
+/* https://codepen.io/l2zeo/pen/ZEBLepW */
+.congratulation-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.congratulation-container[data-winner="1"] {
+  --color-winner: var(--color-player-1-win);
+}
+
+.congratulation-container[data-winner="2"] {
+  --color-winner: var(--color-player-2-win);
+}
+
+.scrap {
+  position: absolute;
+  background: var(--color-winner);
+}
+
+.scrap--confetti-slow {
+  animation: 5s linear 1 both confetti-slow;
+}
+
+.scrap--confetti-medium {
+  animation: 3s linear 1 both confetti-medium;
+}
+
+.scrap--confetti-fast {
+  animation: 2s linear 1 both confetti-fast;
+}
+
+@keyframes confetti-slow {
+  from {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  to {
+    transform: translate3d(20px, 105vh, 0) rotateX(180deg) rotateY(-45deg);
+  }
+}
+
+@keyframes confetti-medium {
+  from {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  to {
+    transform: translate3d(50px, 105vh, 0) rotateX(90deg) rotateY(-90deg);
+  }
+}
+
+@keyframes confetti-fast {
+  from {
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+  }
+
+  to {
+    transform: translate3d(100px, 105vh, 0) rotateX(360deg) rotateY(-180deg);
+  }
+}
