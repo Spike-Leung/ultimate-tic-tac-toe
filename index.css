@@ -1,0 +1,88 @@
+:root {
+    --color-player-1-win: #ff9e9e;
+    --color-player-2-win: #7e7eff;
+    --color-draw: gray;
+    --border-radius: 10px;
+}
+
+.game-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+}
+
+.game-indicator {
+    display: flex;
+}
+
+.game {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+    max-width: 300px;
+}
+
+.tic-tac-toe {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    max-width: 100px;
+    height: 100px;
+    border-radius: var(--border-radius);
+}
+
+.tic-tac-toe--active {
+    box-shadow: 0 0 5px green;
+}
+
+.tic-tac-toe[data-result='1'] {
+    background: var(--color-player-1-win);
+}
+
+.tic-tac-toe[data-result='2'] {
+    background: var(--color-player-2-win);
+}
+
+.tic-tac-toe[data-result='Draw'] {
+    background: var(--color-draw);
+}
+
+.lattice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.lattice:after {
+    content: attr(data-mark);
+    font-weight: bold;
+    color: #fff;
+}
+
+.lattice[data-mark] {
+    cursor: not-allowed;
+}
+
+.lattice[data-player='1'] {
+    background: var(--color-player-1-win);
+}
+
+.lattice[data-player='2'] {
+    background: var(--color-player-2-win);
+}
+
+.game-indicator label[data-player='1'].active {
+    color: var(--color-player-1-win);
+}
+
+.game-indicator label[data-player='2'].active {
+    color: var(--color-player-2-win);
+}
