@@ -75,16 +75,12 @@ export class game {
       this.records[ticTacToeIndex] = result;
     }
 
-    const isGameOver = this.messageFinishInfo(
-      checkTictactoeWinner(this.records)
-    );
+    this.switchPlayer(nextPlayer);
+    this.setNextActiveTicTacToe(latticeIndex);
 
-    if (isGameOver) {
-      this.resetGame();
-    } else {
-      this.switchPlayer(nextPlayer);
-      this.setNextActiveTicTacToe(latticeIndex);
-    }
+    this.messageFinishInfo(
+      checkTictactoeWinner(this.records)
+    ) && this.resetGame();
   }
 
   switchPlayer(player) {
