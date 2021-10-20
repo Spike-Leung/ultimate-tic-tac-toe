@@ -100,11 +100,16 @@ export class game {
   isValidClick(target) {
     const currentTicTacToe = target.closest(`.${this.ticTacToeClass}`);
     const isClickOnLattice = target.classList.contains("lattice");
+    const isEmptyLattice = target.getAttribute("data-player") === null;
     const isClickOnActiveTicTacToe =
       currentTicTacToe &&
       currentTicTacToe.classList.contains(this.ticTacToeActiveClass);
 
     if (!isClickOnLattice) {
+      return false;
+    }
+
+    if (!isEmptyLattice) {
       return false;
     }
 
