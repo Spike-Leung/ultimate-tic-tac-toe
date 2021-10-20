@@ -78,9 +78,10 @@ export class game {
     this.switchPlayer(nextPlayer);
     this.setNextActiveTicTacToe(latticeIndex);
 
-    this.messageFinishInfo(
-      checkTictactoeWinner(this.records)
-    ) && this.resetGame();
+    setTimeout(() => {
+      this.messageFinishInfo(checkTictactoeWinner(this.records)) &&
+        this.resetGame();
+    }, 0);
   }
 
   switchPlayer(player) {
