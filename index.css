@@ -23,8 +23,9 @@
 
 .game-indicator {
     display: flex;
-    padding: 5px;
+    justify-content: space-between;
     border-radius: var(--border-radius);
+    padding: 5px;
 }
 
 .game {

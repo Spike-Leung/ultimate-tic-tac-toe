@@ -27,6 +27,7 @@ export class game {
     this.initTicTacToeInstances();
 
     this.gameElement.addEventListener("click", this.onLatticeClick.bind(this));
+    document.querySelector(".reset-button").addEventListener("click", this.resetGame.bind(this));
   }
 
   drawTicTacToe() {

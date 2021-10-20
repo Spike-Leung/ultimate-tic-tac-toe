@@ -4,21 +4,27 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <div class="game-wrapper"  data-player="1">
+    <div class="game-wrapper" data-player="1">
       <div class="game-indicator">
-        <label>
-          <input type="radio" name="player" value="1" disabled checked />
-          Player 1
-        </label>
-        <label>
-          <input type="radio" name="player" value="2" disabled />
-          Player 2
-        </label>
+        <div>
+          <label>
+            <input type="radio" name="player" value="1" disabled checked />
+            Player 1
+          </label>
+          <label>
+            <input type="radio" name="player" value="2" disabled />
+            Player 2
+          </label>
+        </div>
+
+        <button class="reset-button">Reset</button>
       </div>
 
       <div class="game"></div>
 
-      <a href="https://www.youtube.com/watch?v=wnMHX1eQtIk">How to Play - Ultimate Tic-Tac-Toe</a>
+      <a href="https://www.youtube.com/watch?v=wnMHX1eQtIk"
+        >How to Play - Ultimate Tic-Tac-Toe</a
+      >
     </div>
     <script type="module" src="./js/index.js"></script>
   </body>
