@@ -82,7 +82,7 @@ export class game {
     setTimeout(() => {
       this.messageFinishInfo(checkTictactoeWinner(this.records)) &&
         this.resetGame();
-    }, 0);
+    }, 200);
   }
 
   switchPlayer(player) {
