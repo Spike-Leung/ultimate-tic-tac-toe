@@ -4,6 +4,7 @@
   width: 100vw;
   height: 100vh;
   z-index: -2;
+  overflow: hidden;
 }
 
 .congratulation-container[data-winner="1"] {
@@ -37,7 +38,7 @@
   }
 
   to {
-    transform: translate3d(20px, 105vh, 0) rotateX(180deg) rotateY(-45deg);
+    transform: translate3d(30px, 90vh, 0) rotateX(180deg) rotateY(-45deg);
   }
 }
 
@@ -47,7 +48,7 @@
   }
 
   to {
-    transform: translate3d(50px, 105vh, 0) rotateX(90deg) rotateY(-90deg);
+    transform: translate3d(-50px, 90vh, 0) rotateX(90deg) rotateY(-90deg);
   }
 }
 
@@ -57,6 +58,6 @@
   }
 
   to {
-    transform: translate3d(100px, 105vh, 0) rotateX(360deg) rotateY(-180deg);
+    transform: translate3d(-30px, 90vh, 0) rotateX(360deg) rotateY(-180deg);
   }
 }
