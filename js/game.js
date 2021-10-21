@@ -84,6 +84,8 @@ export class game {
     if (winner !== "Pending") {
       this.messageFinishInfo(winner);
       this.showCongratulation(winner);
+
+      setTimeout(() => this.removeCongratulation(), 12000);
     } else {
       this.switchPlayer(nextPlayer);
       this.setNextActiveTicTacToe(latticeIndex);
@@ -184,13 +186,15 @@ export class game {
 
     this.congratulationInterval = setInterval(() => {
       const left = Math.random() * 100 + "vw";
-      const size = Math.random() * 8 + 2 + "px";
+      const size = Math.random() * 5 + 5 + "px";
       const speed = ["slow", "medium", "fast"][Math.floor(Math.random() * 3)];
+      const color = ["tomato", "orange", "dodgerblue", "mediumseagreen", "gray", "slateblue", "violet"];
       const scrapElement = document.createElement("div");
 
       scrapElement.style.left = left;
       scrapElement.style.width = size;
       scrapElement.style.height = size;
+      scrapElement.style.background = color[Math.floor(Math.random() * color.length)];
       scrapElement.classList.add("scrap", `scrap--confetti-${speed}`);
 
       congratulationContainerEle.appendChild(scrapElement);
@@ -198,7 +202,7 @@ export class game {
       setTimeout(() => {
         scrapElement.parentNode.removeChild(scrapElement);
       }, 3000);
-    }, 25);
+    }, 20);
   }
 
   removeCongratulation() {

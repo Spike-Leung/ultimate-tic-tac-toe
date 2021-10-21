@@ -3,7 +3,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -2;
 }
 
 .congratulation-container[data-winner="1"] {
@@ -16,7 +16,7 @@
 
 .scrap {
   position: absolute;
-  background: var(--color-winner);
+  /* background: var(--color-winner); */
 }
 
 .scrap--confetti-slow {

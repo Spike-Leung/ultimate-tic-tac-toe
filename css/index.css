@@ -32,6 +32,13 @@
   padding: 5px;
 }
 
+.reset-button {
+  border-radius: var(--border-radius);
+  border: 0;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
 .game {
   flex: 1;
   display: grid;
@@ -42,22 +49,22 @@
 }
 
 .game[data-winner-message] {
-    background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .game[data-winner-message] .tic-tac-toe {
-    z-index: -1;
+  z-index: -1;
 }
 
 .game[data-winner-message]:after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    content: attr(data-winner-message);
-    color: var(--color-player, #FFF);
-    font-weight: bold;
-    font-size: xx-large;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: attr(data-winner-message);
+  color: var(--color-player, #fff);
+  font-weight: bold;
+  font-size: xx-large;
 }
 
 .game--start .tic-tac-toe:not(.tic-tac-toe--active) {
